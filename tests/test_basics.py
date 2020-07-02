@@ -1,4 +1,4 @@
-from ViyalCasual.Viya.ViyaConnection import ViyaConnection
+from ViyaCasual.Viya.ViyaConnection import ViyaConnection
 import unittest
 import warnings
 

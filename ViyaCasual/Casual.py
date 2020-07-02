@@ -1,4 +1,4 @@
-from ViyalCasual.CAS.CAS import CAS
+from ViyaCasual.CAS.CAS import CAS
 from copy import copy
 from uuid import uuid4
 

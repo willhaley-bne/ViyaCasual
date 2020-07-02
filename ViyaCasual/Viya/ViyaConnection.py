@@ -1,7 +1,7 @@
 import swat
 import sasctl
 import json
-from ViyalCasual.Viya import ViyaConnectionExceptions
+from ViyaCasual.Viya import ViyaConnectionExceptions
 
 
 class ViyaConnectionParams(object):

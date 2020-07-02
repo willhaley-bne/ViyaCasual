@@ -1,6 +1,6 @@
-from ViyalCasual.CAS.CASTableBase import CASTableBase
-from ViyalCasual.CAS.CASDecisionBase import CASDecisionBase
-from ViyalCasual.Viya.ViyaConnection import ViyaConnection, ViyaConnectionParams
+from ViyaCasual.CAS.CASTableBase import CASTableBase
+from ViyaCasual.CAS.CASDecisionBase import CASDecisionBase
+from ViyaCasual.Viya.ViyaConnection import ViyaConnection, ViyaConnectionParams
 
 
 class CAS(object):
