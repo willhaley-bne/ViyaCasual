@@ -85,9 +85,3 @@ class ViyaConnection(object):
     def get_latest_model_release(self, model_name):
         model_info = self.get_model_details(model_name)
         return '%s%s_%s' % (model_info['name'], model_info['majorRevision'], model_info['minorRevision'])
-
-
-if __name__ == '__main__':
-    test = ViyaConnection()
-    test.swat.cas.CASTable('unitTest')
-    pass

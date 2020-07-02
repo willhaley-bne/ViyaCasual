@@ -11,7 +11,7 @@ setuptools.setyp(
     descripton='A simple way to use Viya\'s tools in Python without getting too serious',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/willhaley-bne/ViyaCasual",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
