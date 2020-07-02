@@ -4,7 +4,7 @@ with open("README.md", 'r') as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="viya-casual-BNE-WILL_HALEY",
+    name="ViyaCASual-BNE",
     version="0.0.1",
     author="Will Haley",
     author_email='willhaley@boddienoell.com',
