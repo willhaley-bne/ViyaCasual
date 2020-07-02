@@ -3,7 +3,7 @@ import setuptools
 with open("README.md", 'r') as fh:
     long_description = fh.read()
 
-setuptools.setyp(
+setuptools.setup(
     name="viya-casual-BNE-WILL_HALEY",
     version="0.0.1",
     author="Will Haley",
