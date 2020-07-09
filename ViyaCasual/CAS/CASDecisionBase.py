@@ -16,13 +16,19 @@ class CASDecisionBase(object):
     details = None
 
     inputs = list()
+    input_data = pd.DataFrame()
     outputs = list()
+    output_data = pd.DataFrame()
 
     def __init__(self, viya_conn, db_conn=None):
         self.warehouse = db_conn
         self.viya = viya_conn
         self.viya.conn.loadactionset('ds2')
         self.viya.conn.loadactionset('table')
+
+    def __del__(self):
+        self.viya.conn.table.dropTable(self.input_table_name)
+        self.viya.conn.table.dropTable(self.output_table_name)
 
     def set_details(self):
         self.details = self.viya.get_model_details(self.rule_name)
@@ -31,6 +37,7 @@ class CASDecisionBase(object):
 
     def __set_required_inputs_outputs(self):
         [self.register_columns(x) for x in self.details['flow']['steps']]
+        self.input_data = pd.DataFrame(self.inputs)
 
     def __set_latest_release(self):
         self.rule_version_name = '%s%s_%s' % (self.details['name'], self.details['majorRevision'], self.details['minorRevision'])
@@ -43,6 +50,7 @@ class CASDecisionBase(object):
                 self.outputs.append(x['targetDecisionTermName'])
 
     def exec(self):
+
         self.__run_model()
 
     def get_results(self):
@@ -60,3 +68,4 @@ class CASDecisionBase(object):
             modelTable={'caslib': self.model_lib, 'name': self.model_table_name},
             casOut={'name': self.output_table_name}
         )
+

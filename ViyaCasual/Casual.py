@@ -49,9 +49,30 @@ class Casual(CAS):
         if 'library' in kwargs:
             decision.model_lib = kwargs['library']
         if 'table_name' in kwargs:
-            decision.model_lib = kwargs['table_name']
+            decision.model_table_name = kwargs['table_name']
         decision.set_details()
 
         return decision
 
+    def run_decision(self, **kwargs):
 
+        if 'name' not in kwargs.keys() and 'decision' not in kwargs.keys():
+            raise Exception('Please provide a decision name or a decision object')
+
+        if 'input_data' not in kwargs.keys() and isinstance(kwargs['input_data'], 'pandas.DataFrame') is False:
+            raise Exception('Please provide the input_data as a Pandas Dataframe')
+
+        if kwargs['name']:
+            dec = self.get_decision(
+                name=kwargs['name'],
+                library=kwargs['library'],
+                table_name=kwargs['table_name']
+            )
+            dec.set_input(kwargs['input_data'])
+            dec.exec()
+            return dec.get_results()
+
+        if kwargs['decision'] and isinstance(kwargs['decision'], 'ViyaCasual.CAS.CASDecisionBase'):
+            kwargs['decision'].exec()
+            kwargs['decision'].set_input(kwargs['input_data'])
+            return kwargs['decision'].get_results()
