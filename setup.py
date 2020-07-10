@@ -5,7 +5,7 @@ with open("README.md", 'r') as fh:
 
 setuptools.setup(
     name="ViyaCASual-BNE",
-    version="0.0.2",
+    version="0.0.21",
     author="Will Haley",
     author_email='willhaley@boddienoell.com',
     descripton='A simple way to use Viya\'s tools in Python without getting too serious',
