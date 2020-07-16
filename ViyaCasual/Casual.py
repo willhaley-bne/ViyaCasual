@@ -77,7 +77,7 @@ class Casual(CAS):
             dec.exec()
             return dec.get_results()
 
-        if 'decision' in kwargs.keys() and isinstance(kwargs['decision'], 'ViyaCasual.CAS.CASDecisionBase'):
+        if 'decision' in kwargs.keys():
             kwargs['decision'].exec()
             kwargs['decision'].set_input(kwargs['input_data'])
             return kwargs['decision'].get_results()
