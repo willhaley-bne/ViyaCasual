@@ -59,9 +59,14 @@ class Casual(CAS):
         if 'name' not in kwargs.keys() and 'decision' not in kwargs.keys():
             raise Exception('Please provide a decision name or a decision object')
 
-        if 'input_data' in kwargs.keys() and isinstance(kwargs['input_data'], 'pandas.DataFrame') is False:
+        if 'input_data' not in kwargs.keys():
             raise Exception('Please provide the input_data as a Pandas Dataframe')
 
+        # todo; Add test to make sure args passed are correct types
+        '''
+        if isinstance(kwargs['input_data'], 'pandas.DataFrame') is False:
+            raise Exception('Please provide the input_data as a Pandas Dataframe')
+        '''
         if 'name' in kwargs.keys():
             dec = self.get_decision(
                 name=kwargs['name'],

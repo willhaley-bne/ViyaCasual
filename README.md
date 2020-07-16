@@ -2,6 +2,8 @@ Viya CASual
 
 A simple way to use Viya's tools in Python without getting too serious
 
+Still in development, not ready for production....  yet...
+
     from ViyaCasual.Casual import Casual
     from Database import SqliteConnector
 

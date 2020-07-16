@@ -5,10 +5,10 @@ with open("README.md", 'r') as fh:
 
 setuptools.setup(
     name="ViyaCASual-BNE",
-    version="0.0.21",
+    version="0.0.22",
     author="Will Haley",
     author_email='willhaley@boddienoell.com',
-    descripton='A simple way to use Viya\'s tools in Python without getting too serious',
+    descripton='(In Development) A simple way to use Viya\'s tools in Python without getting too serious',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/willhaley-bne/ViyaCasual",
@@ -20,3 +20,4 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
 )
+

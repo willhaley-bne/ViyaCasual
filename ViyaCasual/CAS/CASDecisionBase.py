@@ -37,7 +37,6 @@ class CASDecisionBase(object):
 
     def __set_required_inputs_outputs(self):
         [self.register_columns(x) for x in self.details['flow']['steps']]
-        self.input_data = pd.DataFrame(self.inputs)
 
     def __set_latest_release(self):
         self.rule_version_name = '%s%s_%s' % (self.details['name'], self.details['majorRevision'], self.details['minorRevision'])
@@ -50,14 +49,20 @@ class CASDecisionBase(object):
                 self.outputs.append(x['targetDecisionTermName'])
 
     def exec(self):
-
+        self.__validate_inputs()
         self.__run_model()
 
     def get_results(self):
         return pd.DataFrame(self.viya.conn.CASTable(self.output_table_name).to_records(index=False))
 
     def set_input(self, data):
+        self.input_data = data
         CASTable.from_records(self.viya.conn, data, casout={'name': self.input_table_name})
+
+    def __validate_inputs(self):
+        diff = list(set(self.inputs) - set(self.input_data.columns.values))
+        if len(diff) > 0:
+            raise Exception('provided data set columns does not match expected model decision')
 
     # Run the Business Rule / Decision / Model against set input table
     # Promote output table for global use.

@@ -85,3 +85,19 @@ class ViyaConnection(object):
     def get_latest_model_release(self, model_name):
         model_info = self.get_model_details(model_name)
         return '%s%s_%s' % (model_info['name'], model_info['majorRevision'], model_info['minorRevision'])
+
+    def get_library_details(self, library_name="name"):
+        areturns = self.ctl.get('/dataSources/providers/cas/sources/cas-shared-default/children')
+        atemp = json.loads(areturns.text)
+
+        returns = self.ctl.get('/dataTables/dataSources/cas~fs~cas-shared-default~fs~CASUSER(willhaley)/tables')
+        temp = json.loads(returns.text)
+        for item in temp['items']:
+            for link in item['links']:
+                if link['rel'] == 'unload':
+                    test = self.ctl.put(link['href'])
+                    if test['status_code'] == 200:
+                        continue
+                    else:
+                        break
+            pass
